@@ -1,0 +1,94 @@
+$white : white;
+$lightgray : lightgray;
+$black : black;
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.app {
+    .container {
+        width: 100vw;
+
+        .link {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        // NAVBAR
+        .navbar {
+            .container {
+                background-color: $lightgray;
+                padding: 1.25rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .links {
+                    display: flex;
+                    gap: 1rem;
+                    align-items: center;
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        // FOOTER
+        footer {
+            margin-top: 6.25rem;
+            padding: 1.25rem;
+            background-color: lightgray;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.75rem;
+        }
+
+        // SCANNER
+        .scanner {
+            padding: 1.25rem;
+        }
+
+        // ALLERGENS
+        .allergens {
+            display: flex;
+            flex-direction: column;
+            padding: 1.25rem;
+            gap: 1rem;
+
+            .allergens__checkboxes {
+                display: flex;
+                flex-direction: row;
+                gap: 2rem;
+                border: 1px solid black;
+                padding: 1.25rem;
+                align-items: center;
+                justify-content: center;
+
+                .allergens__checkbox-group {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5rem;
+
+                    .allergens__checkbox {
+                        display: flex;
+                        gap: 0.75rem;
+                    }
+                }
+            }
+
+            .allergens__disclaimer {
+                border: 1px solid black;
+                text-align: center;
+                padding: 0.5rem;
+            }
+        }
+
+        // INFO
+        .info {
+            padding: 1.25rem;
+        }
+    }
+}
