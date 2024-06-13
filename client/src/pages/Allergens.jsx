@@ -12,7 +12,7 @@ function Allergens() {
         const array = document.getElementsByTagName("input");
         // Check if values exist in localStorage and check the correct boxes
         for (let i = 0; i < array.length; i++) {
-            if (localStorage.getItem(array[i].id) !== null) {
+            if (localStorage.getItem(array[i].value) !== null) {
                 array[i].checked = true;
             } else {
                 array[i].checked = false;
@@ -26,11 +26,12 @@ function Allergens() {
         let allergensString = "";
         for (let i = 0; i < array.length; i++) {
             if (array[i].checked == true) {
-                // If last item reached
-                if (i == array.length - 1) allergensString = allergensString.concat(array[i].id);
-                else allergensString = allergensString.concat(array[i].id + ", ");
+                allergensString = allergensString.concat(array[i].value + ", ");
             }
         }
+
+        // Remove the last comma from string
+        allergensString = allergensString.substring(0, allergensString.length - 2);
 
         if (allergensString == "") setAllergens("nie wybrano");
         else setAllergens(allergensString);
@@ -51,46 +52,46 @@ function Allergens() {
             <div className="allergens__checkboxes">
                 <div className="allergens__checkbox-group">
                     <div className="allergens__checkbox">
-                        <input type="checkbox" id="alergen1" value="alergen1" onChange={() => setAllergen("alergen1")} />
-                        <label htmlFor="allergen1">Alergen 1</label>
+                        <input type="checkbox" id="mleko" value="mleko" onChange={() => setAllergen("mleko")} />
+                        <label htmlFor="mleko">Mleko</label>
                     </div>
                     <div className="allergens__checkbox">
-                        <input type="checkbox" id="alergen2" value="alergen2" onChange={() => setAllergen("alergen2")} />
-                        <label htmlFor="alergen2">Alergen 2</label>
+                        <input type="checkbox" id="jaja" value="jaja" onChange={() => setAllergen("jaja")} />
+                        <label htmlFor="jaja">Jaja</label>
                     </div>
                     <div className="allergens__checkbox">
-                        <input type="checkbox" id="alergen3" value="alergen3" onChange={() => setAllergen("alergen3")} />
-                        <label htmlFor="alergen3">Alergen 3</label>
-                    </div>
-                </div>
-
-                <div className="allergens__checkbox-group">
-                    <div className="allergens__checkbox">
-                        <input type="checkbox" id="alergen4" value="alergen4" onChange={() => setAllergen("alergen4")} />
-                        <label htmlFor="alergen4">Alergen 4</label>
-                    </div>
-                    <div className="allergens__checkbox">
-                        <input type="checkbox" id="alergen5" value="alergen5" onChange={() => setAllergen("alergen5")} />
-                        <label htmlFor="alergen5">Alergen 5</label>
-                    </div>
-                    <div className="allergens__checkbox">
-                        <input type="checkbox" id="alergen6" value="alergen6" onChange={() => setAllergen("alergen6")} />
-                        <label htmlFor="alergen6">Alergen 6</label>
+                        <input type="checkbox" id="ryby" value="ryby" onChange={() => setAllergen("ryby")} />
+                        <label htmlFor="ryby">Ryby</label>
                     </div>
                 </div>
 
                 <div className="allergens__checkbox-group">
                     <div className="allergens__checkbox">
-                        <input type="checkbox" id="alergen7" value="alergen7" onChange={() => setAllergen("alergen7")} />
-                        <label htmlFor="alergen7">Alergen 7</label>
+                        <input type="checkbox" id="skorupiaki" value="skorupiaki" onChange={() => setAllergen("skorupiaki")} />
+                        <label htmlFor="skorupiaki">Skorupiaki</label>
                     </div>
                     <div className="allergens__checkbox">
-                        <input type="checkbox" id="alergen8" value="alergen8" onChange={() => setAllergen("alergen8")} />
-                        <label htmlFor="alergen8">Alergen 8</label>
+                        <input type="checkbox" id="gluten" value="gluten" onChange={() => setAllergen("gluten")} />
+                        <label htmlFor="gluten">Gluten</label>
                     </div>
                     <div className="allergens__checkbox">
-                        <input type="checkbox" id="alergen9" value="alergen9" onChange={() => setAllergen("alergen9")} />
-                        <label htmlFor="alergen9">Alergen 9</label>
+                        <input type="checkbox" id="soja" value="soja" onChange={() => setAllergen("soja")} />
+                        <label htmlFor="soja">Soja</label>
+                    </div>
+                </div>
+
+                <div className="allergens__checkbox-group">
+                    <div className="allergens__checkbox">
+                        <input type="checkbox" id="sezam" value="sezam" onChange={() => setAllergen("sezam")} />
+                        <label htmlFor="sezam">Sezam</label>
+                    </div>
+                    <div className="allergens__checkbox">
+                        <input type="checkbox" id="orzechy" value="orzechy" onChange={() => setAllergen("orzechy")} />
+                        <label htmlFor="orzechy">Orzechy</label>
+                    </div>
+                    <div className="allergens__checkbox">
+                        <input type="checkbox" id="orzechyziemne" value="orzechy ziemne" onChange={() => setAllergen("orzechy ziemne")} />
+                        <label htmlFor="orzechyziemne">Orzechy ziemne</label>
                     </div>
                 </div>
             </div>
