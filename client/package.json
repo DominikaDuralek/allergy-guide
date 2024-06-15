@@ -10,9 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "quagga": "^0.12.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.77.4"
+    "react-qr-barcode-scanner": "^1.0.6",
+    "sass": "^1.77.4",
+    "use-scan-detection": "^0.2.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",

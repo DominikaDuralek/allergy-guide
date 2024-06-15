@@ -13,6 +13,17 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1rem;
 }
 
+// .scanner-container {
+//     width: 200px;
+//     height: 100px;
+// }
+  
+//   .scanner-view video{
+//     width: 100%;
+//     height: auto;
+//     border: 1px solid #333;
+//   }
+
 .app {
     .container {
         width: 100vw;
@@ -70,7 +81,7 @@ h1, h2, h3, h4, h5, h6 {
                 flex-direction: row;
                 gap: 2rem;
 
-                .scanner__camera {
+                .scanner__camera-option {
                     border: 1px solid $black;
                     flex: 1;
                     padding: 1.25rem;
@@ -82,9 +93,13 @@ h1, h2, h3, h4, h5, h6 {
                     .scanner__camera-icon {
                         width: 5rem;
                     }
+
+                    .scanner__camera-button {
+                        padding: 0.25rem;
+                    }
                 }
 
-                .scanner__code {
+                .scanner__code-option {
                     border: 1px solid $black;
                     flex: 1;
                     padding: 1.25rem;
@@ -97,9 +112,30 @@ h1, h2, h3, h4, h5, h6 {
                         padding: 0.25rem;
                     }
 
-                    .scanner__code-submit {
+                    .scanner__code-button {
                         padding: 0.25rem;
                     }
+                }
+
+                .scanner__camera {
+                    flex: 1;
+                    display: none;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 1.25rem;
+                    gap: 1rem;
+
+                    .scanner-container {
+                        width: 200px;
+                        height: 150px;
+
+                        .scanner-view video{
+                            max-width: 100%;
+                            height: auto;
+                            border: 1px solid #333;
+                        }
+                    }
+                
                 }
 
                 .scanner__product {

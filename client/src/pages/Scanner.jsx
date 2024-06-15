@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import QuaggaScanner from '../components/QuaggaScanner';
+import { BarcodeContext } from '../context/BarcodeContext';
 
 function Scanner() {
     // Product properties extracted from json file
@@ -8,16 +10,31 @@ function Scanner() {
     const [productAllergens, setProductAllergens] = useState('');
     const [productSafe, setProductSafe] = useState('');
 
+    const { barcode } = useContext(BarcodeContext);
+
     // Value to store allergens while still checking
     let tempProductAllergens = "";
+
+    // Show the barcode scanner (camera)
+    const showScanner = () => {
+        document.querySelector(".scanner__camera-option").style.display = "none";
+        document.querySelector(".scanner__code-option").style.display = "none";
+        document.querySelector(".scanner__camera").style.display = "flex";
+    }
+
+    const hideScanner = () => {
+        document.querySelector(".scanner__camera-option").style.display = "flex";
+        document.querySelector(".scanner__code-option").style.display = "flex";
+        document.querySelector(".scanner__camera").style.display = "none";
+    }
 
     // Show info about product in scanner__product component
     const showProductInfo = () => {
         const code = document.getElementById("code").value;
         checkProduct(code);
 
-        document.querySelector(".scanner__camera").style.display = "none";
-        document.querySelector(".scanner__code").style.display = "none";
+        document.querySelector(".scanner__camera-option").style.display = "none";
+        document.querySelector(".scanner__code-option").style.display = "none";
         document.querySelector(".scanner__product").style.display = "flex";
     }
 
@@ -26,9 +43,10 @@ function Scanner() {
         // Clear the product's allergens
         tempProductAllergens = "";
 
-        document.querySelector(".scanner__camera").style.display = "flex";
-        document.querySelector(".scanner__code").style.display = "flex";
+        document.querySelector(".scanner__camera-option").style.display = "flex";
+        document.querySelector(".scanner__code-option").style.display = "flex";
         document.querySelector(".scanner__product").style.display = "none";
+        document.querySelector(".scanner__camera").style.display = "none";
     }
 
     const checkProduct = (code) => {
@@ -83,20 +101,28 @@ function Scanner() {
         <div className="scanner">
             <h1 className="scanner__title">Wprowadź produkt</h1>
             <div className="scanner__container">
-                <div className="scanner__camera">
+                <div className="scanner__camera-option">
                     <h2>Opcja 1</h2>
-                    <h2>Skaner dostępny tylko dla urządzeń mobilnych</h2>
+                    <h2>Dostęp do skanera wymaga kamery</h2>
                     <div className="scanner__camera-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0.5" stroke="currentColor" className="size-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
                         </svg>
                     </div>
+                    <button className="scanner__camera-button" onClick={showScanner} >Uruchom skaner</button>
                 </div>
-                <div className="scanner__code">
+                <div className="scanner__code-option">
                     <h2>Opcja 2</h2>
                     <h2>Wprowadź kod produktu</h2>
                     <input type="text" className="scanner__code-input" id="code" />
-                    <button className="scanner__code-submit" onClick={showProductInfo} >Wyszukaj</button>
+                    <button className="scanner__code-button" onClick={showProductInfo} >Wyszukaj</button>
+                </div>
+
+                <div className="scanner__camera">
+                    <p>Skaned kodów kreskowych</p>
+                    <QuaggaScanner class="scanner-container" ></QuaggaScanner>
+                    <p>{barcode ? barcode : "No barcode scanned yet"}</p>
+                    <button className="scanner__camera-button-back" onClick={hideScanner} >Wyjdź</button>
                 </div>
 
                 <div className="scanner__product">

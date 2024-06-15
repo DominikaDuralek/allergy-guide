@@ -9,6 +9,7 @@ import Scanner from "./pages/Scanner";
 import Info from "./pages/Info";
 import Allergens from "./pages/Allergens";
 import "./style.scss";
+import { BarcodeProvider } from './context/BarcodeContext';
 
 // Layout for every subpage
 const Layout = () => {
@@ -45,13 +46,13 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <>
+    <BarcodeProvider>
       <div className="app">
         <div className="container">
           <RouterProvider router={router} />
         </div>
       </div>
-    </>
+    </BarcodeProvider>
   );
 }
 
