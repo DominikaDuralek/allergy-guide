@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useRef, useEffect } from "react";
 import QuaggaScanner from '../components/QuaggaScanner';
 import { BarcodeContext } from '../context/BarcodeContext';
 
@@ -12,21 +12,43 @@ function Scanner() {
 
     const { barcode } = useContext(BarcodeContext);
 
+    const [scannerVisible, setScannerVisible] = useState(false);
+    const quaggaRef = useRef(null);
+
     // Value to store allergens while still checking
     let tempProductAllergens = "";
 
     // Show the barcode scanner (camera)
     const showScanner = () => {
+        setScannerVisible(true);
+        if (quaggaRef.current) {
+          quaggaRef.current.startScanner();
+        }
+
         document.querySelector(".scanner__camera-option").style.display = "none";
         document.querySelector(".scanner__code-option").style.display = "none";
         document.querySelector(".scanner__camera").style.display = "flex";
     }
 
-    const hideScanner = () => {
+    const hideScanner = () => { 
         document.querySelector(".scanner__camera-option").style.display = "flex";
         document.querySelector(".scanner__code-option").style.display = "flex";
         document.querySelector(".scanner__camera").style.display = "none";
+
+        setScannerVisible(false);
+        if (quaggaRef.current) {
+          quaggaRef.current.stopScanner();
+        }
     }
+
+    useEffect(() => {
+        return () => {
+            // Cleanup function to stop the scanner when the component unmounts
+            if (quaggaRef.current) {
+                quaggaRef.current.stopScanner();
+            }
+        };
+    }, [location]);
 
     // Show info about product in scanner__product component
     const showProductInfo = () => {
@@ -118,12 +140,22 @@ function Scanner() {
                     <button className="scanner__code-button" onClick={showProductInfo} >Wyszukaj</button>
                 </div>
 
-                <div className="scanner__camera">
-                    <p>Skaned kodów kreskowych</p>
-                    <QuaggaScanner class="scanner-container" ></QuaggaScanner>
-                    <p>{barcode ? barcode : "No barcode scanned yet"}</p>
-                    <button className="scanner__camera-button-back" onClick={hideScanner} >Wyjdź</button>
-                </div>
+                
+                    <div className="scanner__camera">
+                        <p>Skaned kodów kreskowych</p>
+                        <QuaggaScanner ref={quaggaRef} class="scanner-container" />
+                        <p>{barcode ? barcode : "No barcode scanned yet"}</p>
+                        <button className="scanner__camera-button-back" onClick={hideScanner}>Wyjdź</button>
+                    </div>
+
+                {/* {scannerVisible && (
+                    <div className="scanner__camera">
+                        <p>Skaned kodów kreskowych</p>
+                        <QuaggaScanner ref={quaggaRef} class="scanner-container" />
+                        <p>{barcode ? barcode : "No barcode scanned yet"}</p>
+                        <button className="scanner__camera-button-back" onClick={hideScanner}>Wyjdź</button>
+                    </div>
+                )} */}
 
                 <div className="scanner__product">
                     <p>Informacje o produkcie</p>

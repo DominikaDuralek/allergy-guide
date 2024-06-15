@@ -1,48 +1,69 @@
-// src/components/QuaggaScanner.jsx
-import React, { useEffect, useRef, useContext } from 'react';
+import React, { useEffect, useRef, useImperativeHandle, forwardRef, useState } from 'react';
 import Quagga from 'quagga';
+import { useContext } from 'react';
 import { BarcodeContext } from '../context/BarcodeContext';
 
-const QuaggaScanner = () => {
+const QuaggaScanner = forwardRef((props, ref) => {
   const scannerRef = useRef(null);
   const { setBarcode } = useContext(BarcodeContext);
 
-  useEffect(() => {
-    Quagga.init({
-      inputStream: {
-        type: 'LiveStream',
-        target: scannerRef.current,
-        constraints: {
-          facingMode: 'environment' // or use 'user' for front camera
+  const [isQuaggaInitialized, setIsQuaggaInitialized] = useState(false);
+
+  useImperativeHandle(ref, () => ({
+    startScanner: () => {
+      Quagga.init({
+        inputStream: {
+          type: 'LiveStream',
+          target: scannerRef.current,
+          constraints: {
+            facingMode: 'environment',
+          },
         },
-      },
-      decoder: {
-        readers: ['code_128_reader', 'ean_reader', 'ean_8_reader', 'code_39_reader', 'code_39_vin_reader', 'codabar_reader', 'upc_reader', 'upc_e_reader', 'i2of5_reader']
-      },
-    }, (err) => {
-      if (err) {
-        console.error(err);
-        return;
-      }
-      Quagga.start();
-    });
+        decoder: {
+          readers: [
+            'code_128_reader',
+            'ean_reader',
+            'ean_8_reader',
+            'code_39_reader',
+            'code_39_vin_reader',
+            'codabar_reader',
+            'upc_reader',
+            'upc_e_reader',
+            'i2of5_reader',
+          ],
+        },
+      }, (err) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        Quagga.start();
+      });
 
-    Quagga.onDetected((data) => {
-      console.log('Barcode detected and processed : [' + data.codeResult.code + ']', data);
-      // Set the barcode data
-      setBarcode(data.codeResult.code);
-    });
+      Quagga.onDetected((data) => {
+        console.log('Barcode detected and processed: [' + data.codeResult.code + ']', data);
+        // Set the barcode data
+        setBarcode(data.codeResult.code);
+      });
+    },
 
-    return () => {
+    stopScanner: () => {
       Quagga.stop();
+    },
+  }));
+
+  // Close the scanner when the subpage gets changed
+  useEffect(() => {
+    return () => {
+        Quagga.stop();
     };
-  }, [setBarcode]);
+  }, [isQuaggaInitialized]);
 
   return (
     <div className="scanner-container">
       <div className="scanner-view" ref={scannerRef} />
     </div>
   );
-};
+});
 
 export default QuaggaScanner;
