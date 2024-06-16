@@ -22,37 +22,35 @@ function Scanner() {
     const showScanner = () => {
         setScannerVisible(true);
         if (quaggaRef.current) {
-          quaggaRef.current.startScanner();
+            quaggaRef.current.startScanner();
         }
 
         document.querySelector(".scanner__camera-option").style.display = "none";
         document.querySelector(".scanner__code-option").style.display = "none";
         document.querySelector(".scanner__camera").style.display = "flex";
+        document.querySelector(".scanner__product").style.display = "none";
     }
 
-    const hideScanner = () => { 
+    const hideScanner = () => {
         document.querySelector(".scanner__camera-option").style.display = "flex";
         document.querySelector(".scanner__code-option").style.display = "flex";
         document.querySelector(".scanner__camera").style.display = "none";
+        document.querySelector(".scanner__product").style.display = "none";
 
         setScannerVisible(false);
         if (quaggaRef.current) {
-          quaggaRef.current.stopScanner();
+            quaggaRef.current.stopScanner();
         }
     }
 
-    useEffect(() => {
-        return () => {
-            // Cleanup function to stop the scanner when the component unmounts
-            if (quaggaRef.current) {
-                quaggaRef.current.stopScanner();
-            }
-        };
-    }, [location]);
+    // Get input agter button is clicked
+    const searchProductCode = () => {
+        const code = document.getElementById("code").value;
+        showProductInfo(code);
+    }
 
     // Show info about product in scanner__product component
-    const showProductInfo = () => {
-        const code = document.getElementById("code").value;
+    const showProductInfo = (code) => {
         checkProduct(code);
 
         document.querySelector(".scanner__camera-option").style.display = "none";
@@ -74,9 +72,9 @@ function Scanner() {
     const checkProduct = (code) => {
         // Fetch the correct product
         window.fetch("https://world.openfoodfacts.org/api/v3/product/" + code + ".json")
-            .then(function(response){
+            .then(function (response) {
                 return response.json();
-            }).then(function(json){
+            }).then(function (json) {
                 setProductName(json.product.product_name);
                 setProductCode(json.code);
 
@@ -92,7 +90,7 @@ function Scanner() {
                 checkAllergen("orzechy ziemne", ["peanut", "orzeszki", "ziemne"], json.product.allergens);
 
                 // Determine product safety
-                if(tempProductAllergens == "") {
+                if (tempProductAllergens == "") {
                     setProductSafe("TAK");
                     tempProductAllergens = "nie zawiera";
                 } else {
@@ -101,23 +99,39 @@ function Scanner() {
                 }
 
                 setProductAllergens(tempProductAllergens);
-            }).catch(function(error) {
+            }).catch(function (error) {
                 console.log(error);
             });
     }
 
     const checkAllergen = (allergen, keywords, jsonAllergens) => {
         // If allergen exists in localStorage
-        if(localStorage.getItem(allergen) !== null) {
+        if (localStorage.getItem(allergen) !== null) {
             // Check if alergen is in the product
             for (let i = 0; i < keywords.length; i++) {
-                if((jsonAllergens).includes(keywords[i])) {
+                if ((jsonAllergens).includes(keywords[i])) {
                     tempProductAllergens += (allergen + ", ");
                     break;
                 }
             }
         }
     }
+
+    useEffect(() => {
+        if (barcode) {
+            showProductInfo(barcode);
+            quaggaRef.current.stopScanner();
+            document.querySelector(".scanner__camera").style.display = "none";
+        }
+    }, [barcode]);
+
+    // Hide scanenr and product info on component load
+    useEffect(() => {
+            document.querySelector(".scanner__camera-option").style.display = "flex";
+            document.querySelector(".scanner__code-option").style.display = "flex";
+            document.querySelector(".scanner__camera").style.display = "none";
+            document.querySelector(".scanner__product").style.display = "none";
+    }, []);
 
     return (
         <div className="scanner">
@@ -128,7 +142,7 @@ function Scanner() {
                     <h2>Dostęp do skanera wymaga kamery</h2>
                     <div className="scanner__camera-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0.5" stroke="currentColor" className="size-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
                         </svg>
                     </div>
                     <button className="scanner__camera-button" onClick={showScanner} >Uruchom skaner</button>
@@ -137,25 +151,15 @@ function Scanner() {
                     <h2>Opcja 2</h2>
                     <h2>Wprowadź kod produktu</h2>
                     <input type="text" className="scanner__code-input" id="code" />
-                    <button className="scanner__code-button" onClick={showProductInfo} >Wyszukaj</button>
+                    <button className="scanner__code-button" onClick={searchProductCode} >Wyszukaj</button>
                 </div>
 
-                
-                    <div className="scanner__camera">
-                        <p>Skaned kodów kreskowych</p>
-                        <QuaggaScanner ref={quaggaRef} class="scanner-container" />
-                        <p>{barcode ? barcode : "No barcode scanned yet"}</p>
-                        <button className="scanner__camera-button-back" onClick={hideScanner}>Wyjdź</button>
-                    </div>
-
-                {/* {scannerVisible && (
-                    <div className="scanner__camera">
-                        <p>Skaned kodów kreskowych</p>
-                        <QuaggaScanner ref={quaggaRef} class="scanner-container" />
-                        <p>{barcode ? barcode : "No barcode scanned yet"}</p>
-                        <button className="scanner__camera-button-back" onClick={hideScanner}>Wyjdź</button>
-                    </div>
-                )} */}
+                <div className="scanner__camera">
+                    <p>Skaned kodów kreskowych</p>
+                    <QuaggaScanner ref={quaggaRef} class="scanner-container" />
+                    <p>{barcode ? barcode : "No barcode scanned yet"}</p>
+                    <button className="scanner__camera-button-back" onClick={hideScanner}>Wyjdź</button>
+                </div>
 
                 <div className="scanner__product">
                     <p>Informacje o produkcie</p>

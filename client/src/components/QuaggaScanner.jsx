@@ -38,6 +38,7 @@ const QuaggaScanner = forwardRef((props, ref) => {
           return;
         }
         Quagga.start();
+        setIsQuaggaInitialized(true);
       });
 
       Quagga.onDetected((data) => {
@@ -49,15 +50,18 @@ const QuaggaScanner = forwardRef((props, ref) => {
 
     stopScanner: () => {
       Quagga.stop();
+      setIsQuaggaInitialized(false);
     },
   }));
 
   // Close the scanner when the subpage gets changed
   useEffect(() => {
     return () => {
-        Quagga.stop();
+        if (isQuaggaInitialized) {
+            Quagga.stop();
+        }
     };
-  }, [isQuaggaInitialized]);
+}, [isQuaggaInitialized]);
 
   return (
     <div className="scanner-container">
