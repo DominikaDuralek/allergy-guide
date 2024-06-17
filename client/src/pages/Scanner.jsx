@@ -15,6 +15,8 @@ function Scanner() {
     const [scannerVisible, setScannerVisible] = useState(false);
     const quaggaRef = useRef(null);
 
+    const [codeErrorMessage, setCodeErrorMessage] = useState('');
+
     // Value to store allergens while still checking
     let tempProductAllergens = "";
 
@@ -67,6 +69,8 @@ function Scanner() {
         document.querySelector(".scanner__code-option").style.display = "flex";
         document.querySelector(".scanner__product").style.display = "none";
         document.querySelector(".scanner__camera").style.display = "none";
+
+        setCodeErrorMessage('');
     }
 
     const checkProduct = (code) => {
@@ -101,6 +105,10 @@ function Scanner() {
                 setProductAllergens(tempProductAllergens);
             }).catch(function (error) {
                 console.log(error);
+                setCodeErrorMessage("Nie znaleziono");
+                // document.querySelector(".scanner__camera-option").style.display = "flex";
+                // document.querySelector(".scanner__code-option").style.display = "flex";
+                // document.querySelector(".scanner__product").style.display = "none";
             });
     }
 
@@ -119,9 +127,13 @@ function Scanner() {
 
     useEffect(() => {
         if (barcode) {
-            showProductInfo(barcode);
-            quaggaRef.current.stopScanner();
-            document.querySelector(".scanner__camera").style.display = "none";
+            window.fetch("https://world.openfoodfacts.org/api/v3/product/" + code + ".json").then(function () {
+                showProductInfo(barcode);
+                quaggaRef.current.stopScanner();
+                document.querySelector(".scanner__camera").style.display = "none";
+            }).catch(function (error) {
+                setCodeErrorMessage("Nie znaleziono");
+            });
         }
     }, [barcode]);
 
@@ -151,13 +163,14 @@ function Scanner() {
                     <h2>Opcja 2</h2>
                     <h2>Wprowadź kod produktu</h2>
                     <input type="text" className="scanner__code-input" id="code" />
+                    <p>{codeErrorMessage}</p>
                     <button className="scanner__code-button" onClick={searchProductCode} >Wyszukaj</button>
                 </div>
 
                 <div className="scanner__camera">
-                    <p>Skaned kodów kreskowych</p>
+                    <p>Skaner kodów kreskowych</p>
                     <QuaggaScanner ref={quaggaRef} class="scanner-container" />
-                    <p>{barcode ? barcode : "No barcode scanned yet"}</p>
+                    <p>{codeErrorMessage}</p>
                     <button className="scanner__camera-button-back" onClick={hideScanner}>Wyjdź</button>
                 </div>
 
