@@ -106,9 +106,6 @@ function Scanner() {
             }).catch(function (error) {
                 console.log(error);
                 setCodeErrorMessage("Nie znaleziono");
-                // document.querySelector(".scanner__camera-option").style.display = "flex";
-                // document.querySelector(".scanner__code-option").style.display = "flex";
-                // document.querySelector(".scanner__product").style.display = "none";
             });
     }
 

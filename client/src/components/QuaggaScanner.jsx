@@ -42,7 +42,6 @@ const QuaggaScanner = forwardRef((props, ref) => {
       });
 
       Quagga.onDetected((data) => {
-        console.log('Barcode detected and processed: [' + data.codeResult.code + ']', data);
         // Set the barcode data
         setBarcode(data.codeResult.code);
       });
