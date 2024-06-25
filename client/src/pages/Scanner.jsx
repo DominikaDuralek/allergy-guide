@@ -34,6 +34,7 @@ function Scanner() {
     }
 
     const hideScanner = () => {
+        setCodeErrorMessage(null);
         document.querySelector(".scanner__camera-option").style.display = "flex";
         document.querySelector(".scanner__code-option").style.display = "flex";
         document.querySelector(".scanner__camera").style.display = "none";
@@ -45,7 +46,7 @@ function Scanner() {
         }
     }
 
-    // Get input agter button is clicked
+    // Get input after button is clicked
     const searchProductCode = () => {
         const code = document.getElementById("code").value;
         showProductInfo(code);
@@ -124,17 +125,25 @@ function Scanner() {
 
     useEffect(() => {
         if (barcode) {
-            window.fetch("https://world.openfoodfacts.org/api/v3/product/" + code + ".json").then(function () {
+            window.fetch("https://world.openfoodfacts.org/api/v3/product/" + code + ".json").then((response) => {
+                if(!response.ok){
+                    setCodeErrorMessage("Nie znaleziono");
+                    throw Error(response.statusText);
+                }
+                return;
+            }).then(function () {
+                console.log("ok");
                 showProductInfo(barcode);
                 quaggaRef.current.stopScanner();
                 document.querySelector(".scanner__camera").style.display = "none";
             }).catch(function (error) {
+                console.log("error");
                 setCodeErrorMessage("Nie znaleziono");
             });
         }
     }, [barcode]);
 
-    // Hide scanenr and product info on component load
+    // Hide scanner and product info on component load
     useEffect(() => {
             document.querySelector(".scanner__camera-option").style.display = "flex";
             document.querySelector(".scanner__code-option").style.display = "flex";
