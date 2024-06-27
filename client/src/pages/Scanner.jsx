@@ -49,7 +49,21 @@ function Scanner() {
     // Get input after button is clicked
     const searchProductCode = () => {
         const code = document.getElementById("code").value;
-        showProductInfo(code);
+
+        window.fetch("https://world.openfoodfacts.org/api/v3/product/" + code + ".json").then((response) => {
+            if(!response.ok){
+                setCodeErrorMessage("Nie znaleziono");
+                throw Error(response.statusText);
+            }
+            return;
+        }).then(function () {
+            console.log("ok");
+            showProductInfo(code);
+        }).catch(function (error) {
+            console.log("error");
+            setCodeErrorMessage("Nie znaleziono");
+        });
+
     }
 
     // Show info about product in scanner__product component
