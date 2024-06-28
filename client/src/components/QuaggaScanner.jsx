@@ -8,16 +8,43 @@ const QuaggaScanner = forwardRef((props, ref) => {
   const { setBarcode } = useContext(BarcodeContext);
 
   const [isQuaggaInitialized, setIsQuaggaInitialized] = useState(false);
+  const [videoDevices, setVideoDevices] = useState([]);
+
+  useEffect(() => {
+    // Get the list of video devices
+    Quagga.CameraAccess.enumerateVideoDevices().then((devices) => {
+      console.log(devices);
+      setVideoDevices(devices);
+    });
+  }, []);
+
+  const isMobileDevice = () => {
+    return /Mobi|Android/i.test(navigator.userAgent);
+  };
+
+  const getPreferredCameraId = () => {
+    if (videoDevices.length === 0) return null;
+    if (isMobileDevice()) {
+      return videoDevices[videoDevices.length - 1].deviceId; // Use the last camera on mobile
+    } else {
+      return videoDevices[0].deviceId; // Use the first camera on PC
+    }
+  };
 
   useImperativeHandle(ref, () => ({
     startScanner: () => {
-      Quagga.init({
+      const cameraId = getPreferredCameraId();
+      const constraints = {
+        facingMode: 'environment',
+        focusMode: 'continuous',
+        ...(cameraId && { deviceId: cameraId }),
+      };
+
+      Quagga.init({        
         inputStream: {
           type: 'LiveStream',
           target: scannerRef.current,
-          constraints: {
-            facingMode: 'environment',
-          },
+          constraints,
         },
         decoder: {
           readers: [
@@ -60,7 +87,7 @@ const QuaggaScanner = forwardRef((props, ref) => {
             Quagga.stop();
         }
     };
-}, [isQuaggaInitialized]);
+  }, [isQuaggaInitialized]);
 
   return (
     <div className="scanner-container">
