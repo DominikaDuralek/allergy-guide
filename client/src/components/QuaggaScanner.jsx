@@ -25,9 +25,11 @@ const QuaggaScanner = forwardRef((props, ref) => {
   const getPreferredCameraId = () => {
     if (videoDevices.length === 0) return null;
     if (isMobileDevice()) {
-      return videoDevices[videoDevices.length - 1].deviceId; // Use the last camera on mobile
+      // Use the last camera on mobile
+      return videoDevices[videoDevices.length - 1].deviceId;
     } else {
-      return videoDevices[0].deviceId; // Use the first camera on PC
+      // Use the first camera on PC
+      return videoDevices[0].deviceId;
     }
   };
 
