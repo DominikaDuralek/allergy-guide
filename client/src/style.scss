@@ -53,11 +53,6 @@ button:hover {
         flex-direction: column;
         justify-content: space-between;
 
-        .link {
-            text-decoration: none;
-            color: inherit;
-        }
-
         // NAVBAR
         .navbar {
             padding: 1.25rem;
@@ -80,6 +75,8 @@ button:hover {
             }
 
             .link {
+                text-decoration: none;
+                color: inherit;
                 position: relative;
                 letter-spacing: 0.05em;
 

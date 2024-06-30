@@ -5,11 +5,9 @@ function Navbar() {
   let activeSection = "";
 
   const changeActiveSection = (section) => (event) => {
-        // Remove 'active' class from all links
         const links = document.querySelectorAll('.link');
         links.forEach(link => link.classList.remove('link__active'));
     
-        // Add 'active' class to the clicked link
         event.currentTarget.classList.add('link__active');
   }
 
