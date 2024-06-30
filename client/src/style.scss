@@ -1,7 +1,8 @@
 $white : #ffffff;
 $black : #3C3D41;
 $lightgray : #f2f2f2;
-$darkgray : #A09EAD;
+$mediumgray : #e8e8e8;
+$darkgray : #9391a1;
 $red : #ED1C24;
 $blue : #23ABE1;
 $yellow : #FFDCAB;
@@ -25,6 +26,25 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 1rem;
 }
 
+button {
+    padding: 1em;
+    background-color: $blue;
+    border: 2px solid $blue;
+    text-transform: uppercase;
+    letter-spacing: 0.05rem;
+    color: $white;
+    border-radius: 6px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: transparent;
+    border: 2px solid $blue;
+    color: $blue;
+    transition: 0.5s;
+}
+
 .app {
     .container {
         width: 100vw;
@@ -44,33 +64,32 @@ h1, h2, h3, h4, h5, h6 {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid $lightgray;
+            border-bottom: 2px solid $mediumgray;
 
-            .logo img{
+            .navbar__logo img{
                 width: 8rem;
                 height: auto;
+                border-right: 2px solid $mediumgray;
             }
 
             .links {
                 display: flex;
-                gap: 2.5rem;
+                gap: 2.25rem;
                 align-items: center;
                 text-transform: uppercase;
             }
 
             .link {
                 position: relative;
-                font-size: 2rem;
-                text-decoration: none;
-                color: inherit;
+                letter-spacing: 0.05em;
 
                 &::after {
                     content: "";
                     position: absolute;
                     left: 0;
-                    bottom: -2.25rem; // Adjust this value to control the offset of the border
+                    bottom: -2.35rem;
                     width: 100%;
-                    height: 0; // Adjust this value to control the thickness of the border
+                    height: 0;
                     background-color: transparent;
                     transition: 0.5s;
                 }
@@ -81,23 +100,47 @@ h1, h2, h3, h4, h5, h6 {
                 }
             }
 
+            .link__active {
+                position: relative;
+                letter-spacing: 0.05em;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: -2.35rem;
+                    width: 100%;
+                    height: 3px;
+                    background-color: $blue;
+                }
+            }
+
             .link h6 {
                 font-size: 1rem;
+            }
+
+            .navbar__line {
+                border-right: 2px solid $mediumgray;
+                height: 2rem;
             }
         
         }
 
         // FOOTER
         footer {
-            // position: fixed;
-            // bottom: 0;
             width: 100%;
             padding: 1.25rem;
-            background-color: lightgray;
+            background-color: $lightgray;
             display: flex;
             align-items: center;
-            justify-content: space-between;
             font-size: 0.75rem;
+            color: $darkgray;
+            gap: 2rem;
+
+            .footer__logo img{
+                width: 8rem;
+                height: auto;
+            }
         }
 
         // SCANNER
@@ -112,10 +155,11 @@ h1, h2, h3, h4, h5, h6 {
 
             .scanner__title {
                 font-size: 1.25rem;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
             }
 
             .scanner__container {
-                background-color: $lightgray;
                 display: flex;
                 flex-direction: row;
                 gap: 2rem;
@@ -123,42 +167,51 @@ h1, h2, h3, h4, h5, h6 {
                 height: 24rem;
 
                 .scanner__camera-option {
-                    border: 1px solid $black;
+                    color: $black;
+                    border: 2px solid $mediumgray;
                     flex: 1;
-                    padding: 1.25rem;
+                    padding: 2rem;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    gap: 2rem;
+                    justify-content: space-between;
+                    border-radius: 10px;
 
                     .scanner__camera-icon {
                         width: 5rem;
                     }
 
                     .scanner__camera-button {
-                        padding: 0.25rem;
+                        width: 11rem;
                     }
+
                 }
 
                 .scanner__code-option {
-                    border: 1px solid $black;
+                    border: 2px solid $mediumgray;
+                    border-radius: 10px;
                     flex: 1;
-                    padding: 1.25rem;
+                    padding: 2rem;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
-                    gap: 1rem;
+                    justify-content: space-between;
 
                     .scanner__code-input {
-                        padding: 0.25rem;
+                        padding: 0.5rem;
+                        width: 90%;
+                        border-radius: 6px;
+                        border: 1px solid $darkgray;
                     }
 
                     .scanner__code-button {
-                        padding: 0.25rem;
+                        width: 11rem;
                     }
                 }
 
                 .scanner__camera {
+                    border: 2px solid $mediumgray;
+                    border-radius: 10px;
                     flex: 1;
                     display: none;
                     flex-direction: column;
@@ -168,31 +221,61 @@ h1, h2, h3, h4, h5, h6 {
                     gap: 1rem;
 
                     .scanner-container {
-                        width: 300px;
-                        height: 200px;
+                        width: 330px;
+                        height: 220px;
                         overflow: hidden;
 
                         .scanner-view video{
                             max-width: 100%;
                             height: auto;
-                            border: 1px solid #333;
                         }
+                    }
+
+                    .scanner__camera-button-back {
+                        width: 10rem;
                     }
                 
                 }
 
                 .scanner__product {
+                    border: 2px solid $mediumgray;
+                    border-radius: 10px;
                     flex: 1;
                     display: none;
                     flex-direction: column;
                     justify-content: center;
                     align-items: center;
                     padding: 1.25rem;
-                    gap: 1rem;
+                    gap: 1.5rem;
+
+                    .scanner__product__text-container {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.1rem;
+                        border-bottom: 2px solid $mediumgray;
+                        width: 18rem;
+                    }
 
                     .scanner__product__button-back {
                         padding: 0.25rem;
                         width: 12rem;
+                    }
+                }
+
+                .scanner__section-title {
+                    text-transform: uppercase;
+                    margin-bottom: 1rem;
+                    position: relative;
+
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        left: 0;
+                        bottom: -1rem;
+                        width: 100%;
+                        height: 2px;
+                        background-color: $red;
+                        transition: 0.5s;
                     }
                 }
             }
@@ -210,47 +293,93 @@ h1, h2, h3, h4, h5, h6 {
             .allergens__title {
                 font-size: 1.25rem;
                 align-self: center;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+
+                margin-bottom: 1rem;
+                position: relative;
+
+                &::after {
+                    content: "";
+                    position: absolute;
+                    left: 0;
+                    bottom: -1rem;
+                    width: 100%;
+                    height: 2px;
+                    background-color: $red;
+                    transition: 0.5s;
+                }
             }
 
             .allergens__checkboxes {
+                // border: 2px solid $blue;
+                // border-radius: 10px;
+                // border-bottom: 2px solid $blue;
+                background-color: $mediumgray;
+                border-radius: 10px;
                 display: flex;
                 flex-direction: row;
-                border: 1px solid black;
                 padding: 1.25rem;
                 align-items: center;
                 justify-content: space-evenly;
                 flex: 4;
-
-                font-size: 1.25rem;
+                font-size: 1.35rem;
 
                 .allergens__checkbox-group {
                     display: flex;
                     flex-direction: column;
                     gap: 2rem;
 
-                    .allergens__checkbox {
+                    .allergens__checkbox,
+                    .allergens__checkbox input,
+                    .allergens__checkbox label {
                         display: flex;
                         gap: 0.75rem;
+                        cursor: pointer;
+                        transition: 0.25s;
+
+                        &:hover {
+                            color: $red;
+                            transition: 0.25s;
+                        }
                     }
                 }
             }
 
             .allergens__chosen {
-                border: 1px solid black;
+                // border: 2px solid $blue;
+                // border-radius: 10px;
                 padding: 0.5rem;
                 flex: 1;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                font-size: 1.15rem;
+                border-bottom: 2px solid $red;
             }
 
             .allergens__disclaimer {
-                border: 1px solid black;
+                // border: 2px solid $mediumgray;
+                // border-radius: 10px;
                 padding: 0.5rem;
                 flex: 1;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                text-align: center;
+
+                .allergens__disclaimer-link a{
+                    text-decoration: none;
+                    color: $blue;
+                    transition: 0.25s;
+                    text-transform: uppercase;
+                }
+
+                .allergens__disclaimer-link a:hover{
+                    text-decoration: none;
+                    color: $red;
+                    transition: 0.25s;
+                }
             }
         }
 

@@ -155,6 +155,7 @@ function Scanner() {
 
     // Hide scanner and product info on component load
     useEffect(() => {
+            setCodeErrorMessage("");
             document.querySelector(".scanner__camera-option").style.display = "flex";
             document.querySelector(".scanner__code-option").style.display = "flex";
             document.querySelector(".scanner__camera").style.display = "none";
@@ -166,10 +167,10 @@ function Scanner() {
             <h1 className="scanner__title">Wprowadź produkt</h1>
             <div className="scanner__container">
                 <div className="scanner__camera-option">
-                    <h2>Opcja 1</h2>
+                    <h2 className="scanner__section-title">Skaner kodów kreskowych</h2>
                     <h2>Dostęp do skanera wymaga kamery</h2>
                     <div className="scanner__camera-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1" stroke="currentColor" className="size-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0.85" stroke="#23ABE1" className="size-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
                         <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
                     </svg>
@@ -177,26 +178,28 @@ function Scanner() {
                     <button className="scanner__camera-button" onClick={showScanner} >Uruchom skaner</button>
                 </div>
                 <div className="scanner__code-option">
-                    <h2>Opcja 2</h2>
+                    <h2 className="scanner__section-title">Ręczne wpisanie kodu</h2>
                     <h2>Wprowadź kod produktu</h2>
                     <input type="text" className="scanner__code-input" id="code" />
-                    <p>{codeErrorMessage}</p>
+                    <p className="error-message">{codeErrorMessage}</p>
                     <button className="scanner__code-button" onClick={searchProductCode} >Wyszukaj</button>
                 </div>
 
                 <div className="scanner__camera">
-                    <p>Skaner kodów kreskowych</p>
+                    <h2 className="scanner__section-title">Skaner kodów kreskowych</h2>
                     <QuaggaScanner ref={quaggaRef} class="scanner-container" />
-                    <p>{codeErrorMessage}</p>
+                    <p className="error-message">{codeErrorMessage}</p>
                     <button className="scanner__camera-button-back" onClick={hideScanner}>Wyjdź</button>
                 </div>
 
                 <div className="scanner__product">
-                    <p>Informacje o produkcie</p>
-                    <span>Nazwa: {productName}</span>
-                    <span>Kod: {productCode}</span>
-                    <span>Produkt bezpieczny: {productSafe}</span>
-                    <span>Twoje alergeny: {productAllergens}</span>
+                    <h2 className="scanner__section-title">Informacje o produkcie</h2>
+                    <div className="scanner__product__text-container">
+                        <span>Nazwa: {productName}</span><br />
+                        <span>Kod: {productCode}</span><br />
+                        <span>Produkt bezpieczny: {productSafe}</span><br />
+                        <span>Twoje alergeny: {productAllergens}</span><br />
+                    </div>
                     <button className="scanner__product__button-back" onClick={hideProductInfo} >Wyszukaj kolejny produkt</button>
                 </div>
             </div>

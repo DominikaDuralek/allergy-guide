@@ -100,7 +100,7 @@ function Allergens() {
             </div>
             <div className="allergens__disclaimer">
                 <p>Wybór zostanie zapamiętany do momentu wyczyszczenia przeglądarki.</p>
-                <p><Link to="/">Przejdź do Skanera</Link></p>
+                &nbsp;<p className="allergens__disclaimer-link"><Link to="/">Przejdź do Skanera</Link></p>
             </div>
         </div>
     )
