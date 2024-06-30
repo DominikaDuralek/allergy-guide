@@ -386,9 +386,37 @@ button:hover {
         // INFO
         .info {
             padding: 1.25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            
+            .info__image-container {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
 
-            .info__title {
-                font-size: 1.5rem;
+            .info__image-container img{
+                width: 40rem;
+                height: auto;
+            }
+
+            .info__image-container img:hover{
+                cursor: pointer;
+            }
+            
+            .info__tooltip {
+                position: absolute;
+                background-color: rgba($color: #3C3D41, $alpha: 0.8);
+                color: $white;
+                padding: 1rem;
+                border-radius: 8px;
+                font-size: 1.15rem;
+                display: none;
+                pointer-events: none;
             }
         }
     }

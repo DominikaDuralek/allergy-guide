@@ -16,7 +16,7 @@ function Navbar() {
   return (
     <div className='navbar'>
       <div className="navbar__logo">
-        <img src="../public/logo.png" alt="logo" />
+        <img src="/logo.png" alt="logo" />
       </div>
       <div className="links">
         <Link className="link" to="/" onClick={changeActiveSection("scanner")}><h6>Skaner</h6></Link>
