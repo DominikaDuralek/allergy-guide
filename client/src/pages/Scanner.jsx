@@ -168,7 +168,7 @@ function Scanner() {
             <div className="scanner__container">
                 <div className="scanner__camera-option">
                     <h2 className="scanner__section-title">Skaner kodów kreskowych</h2>
-                    <h2>Dostęp do skanera wymaga kamery</h2>
+                    <h2 className="scanner__section-subtitle">Dostęp do skanera wymaga kamery</h2>
                     <div className="scanner__camera-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="0.85" stroke="#23ABE1" className="size-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
@@ -179,7 +179,7 @@ function Scanner() {
                 </div>
                 <div className="scanner__code-option">
                     <h2 className="scanner__section-title">Ręczne wpisanie kodu</h2>
-                    <h2>Wprowadź kod produktu</h2>
+                    <h2 className="scanner__section-subtitle">Wprowadź kod produktu</h2>
                     <input type="text" className="scanner__code-input" id="code" />
                     <p className="error-message">{codeErrorMessage}</p>
                     <button className="scanner__code-button" onClick={searchProductCode} >Wyszukaj</button>

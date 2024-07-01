@@ -18,9 +18,9 @@ function Navbar() {
       </div>
       <div className="links">
         <Link className="link" to="/" onClick={changeActiveSection("scanner")}><h6>Skaner</h6></Link>
-        <p class="navbar__line"></p>
+        <p className="navbar__line"></p>
         <Link className="link" to="/allergens" onClick={changeActiveSection("allergens")}><h6>Alergeny</h6></Link>
-        <p class="navbar__line"></p>
+        <p className="navbar__line"></p>
         <Link className="link" to="/info" onClick={changeActiveSection("info")}><h6>Informacje</h6></Link>
       </div>
     </div>
