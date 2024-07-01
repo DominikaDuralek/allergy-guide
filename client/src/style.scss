@@ -122,7 +122,6 @@ button:hover {
                 border-right: 2px solid $mediumgray;
                 height: 1.5rem;
             }
-        
         }
 
         // FOOTER
@@ -185,7 +184,6 @@ button:hover {
                         width: 8.5rem;
                         font-size: 0.625rem;
                     }
-
                 }
 
                 .scanner__code-option {
@@ -238,7 +236,6 @@ button:hover {
                         width: 8rem;
                         font-size: 0.625rem;
                     }
-                
                 }
 
                 .scanner__product {
@@ -432,71 +429,34 @@ button:hover {
 /* xs */
 @media (min-width: 475px) {
     .app {
-        .container {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-    
+        .container {    
             // NAVBAR
             .navbar {
                 padding-top: 1rem;
                 padding-bottom: 1rem;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                border-bottom: 2px solid $mediumgray;
     
                 .navbar__logo img{
                     width: 6rem;
-                    height: auto;
-                    border-right: 2px solid $mediumgray;
                 }
     
                 .links {
-                    display: flex;
                     gap: 1.25rem;
-                    align-items: center;
-                    text-transform: uppercase;
                     padding-right: 0.5rem;
                 }
     
                 .link {
-                    text-decoration: none;
-                    color: inherit;
-                    position: relative;
                     letter-spacing: 0.05em;
     
                     &::after {
-                        content: "";
-                        position: absolute;
-                        left: 0;
                         bottom: -1.85rem;
-                        width: 100%;
-                        height: 0;
-                        background-color: transparent;
-                        transition: 0.5s;
-                    }
-                
-                    &:hover::after {
-                        background-color: $blue;
-                        height: 3px;
                     }
                 }
     
                 .link__active {
-                    position: relative;
                     letter-spacing: 0.05em;
     
                     &::after {
-                        content: "";
-                        position: absolute;
-                        left: 0;
                         bottom: -1.85rem;
-                        width: 100%;
-                        height: 3px;
-                        background-color: $blue;
                     }
                 }
     
@@ -505,176 +465,54 @@ button:hover {
                 }
     
                 .navbar__line {
-                    border-right: 2px solid $mediumgray;
                     height: 2rem;
                 }
             
             }
     
-            // FOOTER
-            footer {
-                width: 100%;
-                padding: 1.25rem;
-                background-color: $lightgray;
-                display: flex;
-                align-items: center;
-                font-size: 0.625rem;
-                color: $darkgray;
-                gap: 2rem;
-    
-                .footer__logo img{
-                    width: 4rem;
-                    height: auto;
-                }
-            }
-    
             // SCANNER
             .scanner {
-                height: 100%;
-                padding: 1rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
                 justify-content: flex-start;
-                gap: 2rem;
-    
-                .scanner__title {
-                    font-size: 0.75rem;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
-                    margin-top: 1rem;
-                }
     
                 .scanner__container {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1.5rem;
                     width: 75%;
-                    height: 30rem;
     
                     .scanner__camera-option {
-                        color: $black;
-                        border: 2px solid $mediumgray;
-                        flex: 1;
-                        padding: 2rem;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: space-between;
-                        border-radius: 10px;
                         font-size: 0.375rem;
-    
-                        .scanner__camera-icon {
-                            width: 3rem;
-                        }
     
                         .scanner__camera-button {
                             width: 9rem;
-                            font-size: 0.625rem;
                         }
-    
                     }
     
                     .scanner__code-option {
-                        border: 2px solid $mediumgray;
-                        border-radius: 10px;
-                        flex: 1;
-                        padding: 2rem;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: space-between;
-    
                         .scanner__code-input {
-                            padding: 0.5rem;
-                            width: 75%;
-                            border-radius: 6px;
-                            border: 1px solid $darkgray;
                             font-size: 0.75rem;
                         }
     
                         .scanner__code-button {
                             width: 9rem;
-                            font-size: 0.625rem;
                         }
                     }
     
                     .scanner__camera {
-                        border: 2px solid $mediumgray;
-                        border-radius: 10px;
-                        flex: 1;
-                        display: none;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        padding: 1.25rem;
-                        gap: 1rem;
-    
-                        .scanner-container {
-                            width: 240px;
-                            height: 160px;
-                            overflow: hidden;
-    
-                            .scanner-view video{
-                                max-width: 100%;
-                                height: auto;
-                            }
-                        }
-    
                         .scanner__camera-button-back {
                             font-size: 0.625rem;
                             width: 8rem;
                         }
-                    
                     }
     
                     .scanner__product {
-                        border: 2px solid $mediumgray;
-                        border-radius: 10px;
-                        flex: 1;
-                        display: none;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        padding: 1.25rem;
-                        gap: 3rem;
-    
                         .scanner__product__text-container {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 0.1rem;
-                            border-bottom: 2px solid $mediumgray;
-                            width: 14rem;
-                            font-size: 0.625rem;
-                        }
-    
-                        .scanner__product__button-back {
-                            padding: 0.5rem;
-                            width: 10rem;
                             font-size: 0.625rem;
                         }
                     }
     
                     .scanner__section-title {
-                        text-transform: uppercase;
-                        margin-bottom: 1rem;
-                        position: relative;
-                        font-size: 0.75rem;
-    
                         &::after {
-                            content: "";
-                            position: absolute;
-                            left: 0;
                             bottom: -0.75rem;
-                            width: 100%;
                             height: 2px;
-                            background-color: $red;
-                            transition: 0.5s;
                         }
-                    }
-
-                    .scanner__section-subtitle {
-                        font-size: 0.75rem;
                     }
 
                     .error-message {
@@ -823,385 +661,69 @@ button:hover {
 @media (min-width: 640px) {
     .app {
         .container {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-    
-            // NAVBAR
-            .navbar {
-                padding-top: 1rem;
-                padding-bottom: 1rem;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                border-bottom: 2px solid $mediumgray;
-    
-                .navbar__logo img{
-                    width: 6rem;
-                    height: auto;
-                    border-right: 2px solid $mediumgray;
-                }
-    
-                .links {
-                    display: flex;
-                    gap: 1.25rem;
-                    align-items: center;
-                    text-transform: uppercase;
-                    padding-right: 0.5rem;
-                }
-    
-                .link {
-                    text-decoration: none;
-                    color: inherit;
-                    position: relative;
-                    letter-spacing: 0.05em;
-    
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        left: 0;
-                        bottom: -1.85rem;
-                        width: 100%;
-                        height: 0;
-                        background-color: transparent;
-                        transition: 0.5s;
-                    }
-                
-                    &:hover::after {
-                        background-color: $blue;
-                        height: 3px;
-                    }
-                }
-    
-                .link__active {
-                    position: relative;
-                    letter-spacing: 0.05em;
-    
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        left: 0;
-                        bottom: -1.85rem;
-                        width: 100%;
-                        height: 3px;
-                        background-color: $blue;
-                    }
-                }
-    
-                .link h6 {
-                    font-size: 0.75rem;
-                }
-    
-                .navbar__line {
-                    border-right: 2px solid $mediumgray;
-                    height: 2rem;
-                }
-            
-            }
-    
             // FOOTER
             footer {
-                width: 100%;
-                padding: 1.25rem;
-                background-color: $lightgray;
-                display: flex;
-                align-items: center;
-                font-size: 0.625rem;
-                color: $darkgray;
-                gap: 2rem;
-    
                 .footer__logo img{
                     width: 6rem;
-                    height: auto;
                 }
             }
     
             // SCANNER
             .scanner {
-                height: 100%;
-                padding: 1rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: fle;
-                gap: 2rem;
-    
                 .scanner__title {
                     font-size: 0.875rem;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
                 }
     
                 .scanner__container {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1.5rem;
                     width: 60%;
                     height: 32rem;
     
-                    .scanner__camera-option {
-                        color: $black;
-                        border: 2px solid $mediumgray;
-                        flex: 1;
-                        padding: 2rem;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: space-between;
-                        border-radius: 10px;
-                        font-size: 0.375rem;
-    
-                        .scanner__camera-icon {
-                            width: 3rem;
-                        }
-    
-                        .scanner__camera-button {
-                            width: 9rem;
-                            font-size: 0.625rem;
-                        }
-    
-                    }
-    
-                    .scanner__code-option {
-                        border: 2px solid $mediumgray;
-                        border-radius: 10px;
-                        flex: 1;
-                        padding: 2rem;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: space-between;
-    
-                        .scanner__code-input {
-                            padding: 0.5rem;
-                            width: 75%;
-                            border-radius: 6px;
-                            border: 1px solid $darkgray;
-                            font-size: 0.75rem;
-                        }
-    
-                        .scanner__code-button {
-                            width: 9rem;
-                            font-size: 0.625rem;
-                        }
-                    }
-    
                     .scanner__camera {
-                        border: 2px solid $mediumgray;
-                        border-radius: 10px;
-                        flex: 1;
-                        display: none;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        padding: 1.25rem;
-                        gap: 1rem;
-    
                         .scanner-container {
                             width: 330px;
                             height: 220px;
-                            overflow: hidden;
-    
-                            .scanner-view video{
-                                max-width: 100%;
-                                height: auto;
-                            }
                         }
-    
-                        .scanner__camera-button-back {
-                            font-size: 0.625rem;
-                            width: 8rem;
-                        }
-                    
                     }
     
                     .scanner__product {
-                        border: 2px solid $mediumgray;
-                        border-radius: 10px;
-                        flex: 1;
-                        display: none;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        padding: 1.25rem;
-                        gap: 3rem;
-    
                         .scanner__product__text-container {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 0.1rem;
-                            border-bottom: 2px solid $mediumgray;
                             width: 18rem;
                             font-size: 0.875rem;
                         }
-    
-                        .scanner__product__button-back {
-                            padding: 0.5rem;
-                            width: 10rem;
-                            font-size: 0.625rem;
-                        }
-                    }
-    
-                    .scanner__section-title {
-                        text-transform: uppercase;
-                        margin-bottom: 1rem;
-                        position: relative;
-                        font-size: 0.75rem;
-    
-                        &::after {
-                            content: "";
-                            position: absolute;
-                            left: 0;
-                            bottom: -0.75rem;
-                            width: 100%;
-                            height: 2px;
-                            background-color: $red;
-                            transition: 0.5s;
-                        }
-                    }
-
-                    .scanner__section-subtitle {
-                        font-size: 0.75rem;
-                    }
-
-                    .error-message {
-                        font-size: 0.75rem;
                     }
                 }
             }
     
             // ALLERGENS
-            .allergens {
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                padding: 1.25rem;
-                gap: 1rem;
-    
+            .allergens {    
                 .allergens__title {
                     font-size: 0.875rem;
-                    align-self: center;
-                    text-transform: uppercase;
                     letter-spacing: 0.05em;
-    
-                    margin-bottom: 1rem;
-                    position: relative;
-    
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        left: 0;
-                        bottom: -0.5rem;
-                        width: 100%;
-                        height: 2px;
-                        background-color: $red;
-                        transition: 0.5s;
-                    }
                 }
     
                 .allergens__checkboxes {
-                    background-color: $mediumgray;
-                    border-radius: 10px;
-                    display: flex;
-                    flex-direction: row;
                     padding: 1rem;
-                    align-items: center;
-                    justify-content: space-evenly;
                     flex: 4;
                     font-size: 1rem;
     
                     .allergens__checkbox-group {
-                        display: flex;
-                        flex-direction: column;
                         gap: 1.875rem;
-    
-                        .allergens__checkbox,
-                        .allergens__checkbox input,
-                        .allergens__checkbox label {
-                            display: flex;
-                            gap: 0.75rem;
-                            cursor: pointer;
-                            transition: 0.25s;
-    
-                            &:hover {
-                                color: $red;
-                                transition: 0.25s;
-                            }
-                        }
                     }
                 }
     
                 .allergens__chosen {
-                    padding: 0.5rem;
-                    flex: 1;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
                     font-size: 0.875rem;
-                    border-bottom: 2px solid $red;
                 }
     
                 .allergens__disclaimer {
-                    padding: 0.5rem;
-                    flex: 1;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    text-align: center;
                     font-size: 0.75rem;
-    
-                    .allergens__disclaimer-link a{
-                        text-decoration: none;
-                        color: $blue;
-                        transition: 0.25s;
-                        text-transform: uppercase;
-                    }
-    
-                    .allergens__disclaimer-link a:hover{
-                        text-decoration: none;
-                        color: $red;
-                        transition: 0.25s;
-                    }
                 }
             }
     
             // INFO
             .info {
-                padding: 1.25rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-                
-                .info__image-container {
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-    
                 .info__image-container img{
                     width: 35rem;
-                    height: auto;
-                }
-    
-                .info__image-container img:hover{
-                    cursor: pointer;
-                }
-                
-                .info__tooltip {
-                    position: absolute;
-                    background-color: rgba($color: #3C3D41, $alpha: 0.8);
-                    color: $white;
-                    padding: 1rem;
-                    border-radius: 8px;
-                    font-size: 1.15rem;
-                    display: none;
-                    pointer-events: none;
                 }
             }
         }
@@ -1211,50 +733,23 @@ button:hover {
 /* md */
 @media (min-width: 768px) {
     .app {
-        .container {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-    
+        .container {    
             // NAVBAR
             .navbar {
                 padding: 1.125rem;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                border-bottom: 2px solid $mediumgray;
                 font-size: 0.5rem;
     
                 .navbar__logo img{
                     width: 8rem;
-                    height: auto;
-                    border-right: 2px solid $mediumgray;
                 }
     
                 .links {
-                    display: flex;
                     gap: 1.75rem;
-                    align-items: center;
-                    text-transform: uppercase;
                 }
     
                 .link {
-                    text-decoration: none;
-                    color: inherit;
-                    position: relative;
-                    letter-spacing: 0.05em;
-    
                     &::after {
-                        content: "";
-                        position: absolute;
-                        left: 0;
                         bottom: -2.25rem;
-                        width: 100%;
-                        height: 0;
-                        background-color: transparent;
-                        transition: 0.5s;
                     }
                 
                     &:hover::after {
@@ -1264,83 +759,24 @@ button:hover {
                 }
     
                 .link__active {
-                    position: relative;
-                    letter-spacing: 0.05em;
-    
                     &::after {
-                        content: "";
-                        position: absolute;
-                        left: 0;
                         bottom: -2.25rem;
-                        width: 100%;
-                        height: 3px;
-                        background-color: $blue;
                     }
                 }
     
                 .link h6 {
                     font-size: 1rem;
                 }
-    
-                .navbar__line {
-                    border-right: 2px solid $mediumgray;
-                    height: 2rem;
-                }
-            
-            }
-    
-            // FOOTER
-            footer {
-                width: 100%;
-                padding: 1.25rem;
-                background-color: $lightgray;
-                display: flex;
-                align-items: center;
-                font-size: 0.625rem;
-                color: $darkgray;
-                gap: 2rem;
-    
-                .footer__logo img{
-                    width: 6rem;
-                    height: auto;
-                }
             }
     
             // SCANNER
             .scanner {
-                height: 100%;
-                padding: 1rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: fle;
-                gap: 2rem;
-    
                 .scanner__title {
                     font-size: 1.125rem;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
                 }
     
                 .scanner__container {
-                    display: flex;
-                    flex-direction: column;
-                    gap: 1.5rem;
-                    width: 60%;
-                    height: 32rem;
-    
                     .scanner__camera-option {
-                        color: $black;
-                        border: 2px solid $mediumgray;
-                        flex: 1;
-                        padding: 2rem;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: space-between;
-                        border-radius: 10px;
-                        font-size: 0.5rem;
-    
                         .scanner__camera-icon {
                             width: 4rem;
                         }
@@ -1349,247 +785,37 @@ button:hover {
                             width: 10rem;
                             font-size: 0.75rem;
                         }
-    
                     }
     
                     .scanner__code-option {
-                        border: 2px solid $mediumgray;
-                        border-radius: 10px;
-                        flex: 1;
-                        padding: 2rem;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: space-between;
-    
                         .scanner__code-input {
-                            padding: 0.5rem;
                             width: 80%;
-                            border-radius: 6px;
-                            border: 1px solid $darkgray;
-                            font-size: 0.75rem;
                         }
     
                         .scanner__code-button {
                             width: 10rem;
                             font-size: 0.75rem;
                         }
+
+                        .scanner__code-input {
+                            width: 75%;
+                        }
                     }
     
                     .scanner__camera {
-                        border: 2px solid $mediumgray;
-                        border-radius: 10px;
-                        flex: 1;
-                        display: none;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        padding: 1.25rem;
-                        gap: 1rem;
-    
-                        .scanner-container {
-                            width: 330px;
-                            height: 220px;
-                            overflow: hidden;
-    
-                            .scanner-view video{
-                                max-width: 100%;
-                                height: auto;
-                            }
-                        }
-    
                         .scanner__camera-button-back {
                             font-size: 0.75rem;
                             width: 9rem;
                         }
-                    
                     }
     
                     .scanner__product {
-                        border: 2px solid $mediumgray;
-                        border-radius: 10px;
-                        flex: 1;
-                        display: none;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        padding: 1.25rem;
-                        gap: 3rem;
-    
-                        .scanner__product__text-container {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 0.1rem;
-                            border-bottom: 2px solid $mediumgray;
-                            width: 18rem;
-                            font-size: 0.875rem;
-                        }
-    
                         .scanner__product__button-back {
                             padding: 0.25rem;
                             width: 12rem;
                             font-size: 0.75rem;
                         }
                     }
-    
-                    .scanner__section-title {
-                        text-transform: uppercase;
-                        margin-bottom: 1rem;
-                        position: relative;
-                        font-size: 0.75rem;
-    
-                        &::after {
-                            content: "";
-                            position: absolute;
-                            left: 0;
-                            bottom: -0.75rem;
-                            width: 100%;
-                            height: 2px;
-                            background-color: $red;
-                            transition: 0.5s;
-                        }
-                    }
-
-                    .scanner__section-subtitle {
-                        font-size: 0.75rem;
-                    }
-
-                    .error-message {
-                        font-size: 0.75rem;
-                    }
-                }
-            }
-    
-            // ALLERGENS
-            .allergens {
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                padding: 1.25rem;
-                gap: 1rem;
-    
-                .allergens__title {
-                    font-size: 0.875rem;
-                    align-self: center;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
-    
-                    margin-bottom: 1rem;
-                    position: relative;
-    
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        left: 0;
-                        bottom: -0.5rem;
-                        width: 100%;
-                        height: 2px;
-                        background-color: $red;
-                        transition: 0.5s;
-                    }
-                }
-    
-                .allergens__checkboxes {
-                    background-color: $mediumgray;
-                    border-radius: 10px;
-                    display: flex;
-                    flex-direction: row;
-                    padding: 1rem;
-                    align-items: center;
-                    justify-content: space-evenly;
-                    flex: 4;
-                    font-size: 1rem;
-    
-                    .allergens__checkbox-group {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 1.875rem;
-    
-                        .allergens__checkbox,
-                        .allergens__checkbox input,
-                        .allergens__checkbox label {
-                            display: flex;
-                            gap: 0.75rem;
-                            cursor: pointer;
-                            transition: 0.25s;
-    
-                            &:hover {
-                                color: $red;
-                                transition: 0.25s;
-                            }
-                        }
-                    }
-                }
-    
-                .allergens__chosen {
-                    padding: 0.5rem;
-                    flex: 1;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    font-size: 0.875rem;
-                    border-bottom: 2px solid $red;
-                }
-    
-                .allergens__disclaimer {
-                    padding: 0.5rem;
-                    flex: 1;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    text-align: center;
-                    font-size: 0.75rem;
-    
-                    .allergens__disclaimer-link a{
-                        text-decoration: none;
-                        color: $blue;
-                        transition: 0.25s;
-                        text-transform: uppercase;
-                    }
-    
-                    .allergens__disclaimer-link a:hover{
-                        text-decoration: none;
-                        color: $red;
-                        transition: 0.25s;
-                    }
-                }
-            }
-    
-            // INFO
-            .info {
-                padding: 1.25rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-                
-                .info__image-container {
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-    
-                .info__image-container img{
-                    width: 35rem;
-                    height: auto;
-                }
-    
-                .info__image-container img:hover{
-                    cursor: pointer;
-                }
-                
-                .info__tooltip {
-                    position: absolute;
-                    background-color: rgba($color: #3C3D41, $alpha: 0.8);
-                    color: $white;
-                    padding: 1rem;
-                    border-radius: 8px;
-                    font-size: 1.15rem;
-                    display: none;
-                    pointer-events: none;
                 }
             }
         }
@@ -1600,384 +826,24 @@ button:hover {
 @media (min-width: 1024px) {
     .app {
         .container {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-    
             // NAVBAR
             .navbar {
-                padding: 1.125rem;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                border-bottom: 2px solid $mediumgray;
-                font-size: 0.5rem;
-    
-                .navbar__logo img{
-                    width: 8rem;
-                    height: auto;
-                    border-right: 2px solid $mediumgray;
-                }
-    
                 .links {
-                    display: flex;
                     gap: 2rem;
-                    align-items: center;
-                    text-transform: uppercase;
-                }
-    
-                .link {
-                    text-decoration: none;
-                    color: inherit;
-                    position: relative;
-                    letter-spacing: 0.05em;
-    
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        left: 0;
-                        bottom: -2.25rem;
-                        width: 100%;
-                        height: 0;
-                        background-color: transparent;
-                        transition: 0.5s;
-                    }
-                
-                    &:hover::after {
-                        background-color: $blue;
-                        height: 3px;
-                    }
-                }
-    
-                .link__active {
-                    position: relative;
-                    letter-spacing: 0.05em;
-    
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        left: 0;
-                        bottom: -2.25rem;
-                        width: 100%;
-                        height: 3px;
-                        background-color: $blue;
-                    }
-                }
-    
-                .link h6 {
-                    font-size: 1rem;
-                }
-    
-                .navbar__line {
-                    border-right: 2px solid $mediumgray;
-                    height: 2rem;
-                }
-            
-            }
-    
-            // FOOTER
-            footer {
-                width: 100%;
-                padding: 1.25rem;
-                background-color: $lightgray;
-                display: flex;
-                align-items: center;
-                font-size: 0.625rem;
-                color: $darkgray;
-                gap: 2rem;
-    
-                .footer__logo img{
-                    width: 6rem;
-                    height: auto;
                 }
             }
     
             // SCANNER
             .scanner {
-                height: 100%;
-                padding: 1rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
                 justify-content: center;
-                gap: 2rem;
-    
-                .scanner__title {
-                    font-size: 1.125rem;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
-                }
     
                 .scanner__container {
-                    display: flex;
                     flex-direction: row;
-                    gap: 1.5rem;
-                    width: 60%;
                     height: 22rem;
     
-                    .scanner__camera-option {
-                        color: $black;
-                        border: 2px solid $mediumgray;
-                        flex: 1;
-                        padding: 2rem;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: space-between;
-                        border-radius: 10px;
-                        font-size: 0.5rem;
-    
-                        .scanner__camera-icon {
-                            width: 4rem;
-                        }
-    
-                        .scanner__camera-button {
-                            width: 10rem;
-                            font-size: 0.75rem;
-                        }
-    
-                    }
-    
-                    .scanner__code-option {
-                        border: 2px solid $mediumgray;
-                        border-radius: 10px;
-                        flex: 1;
-                        padding: 2rem;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: space-between;
-    
-                        .scanner__code-input {
-                            padding: 0.5rem;
-                            width: 80%;
-                            border-radius: 6px;
-                            border: 1px solid $darkgray;
-                            font-size: 0.75rem;
-                        }
-    
-                        .scanner__code-button {
-                            width: 10rem;
-                            font-size: 0.75rem;
-                        }
-                    }
-    
-                    .scanner__camera {
-                        border: 2px solid $mediumgray;
-                        border-radius: 10px;
-                        flex: 1;
-                        display: none;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        padding: 1.25rem;
-                        gap: 1rem;
-    
-                        .scanner-container {
-                            width: 330px;
-                            height: 220px;
-                            overflow: hidden;
-    
-                            .scanner-view video{
-                                max-width: 100%;
-                                height: auto;
-                            }
-                        }
-    
-                        .scanner__camera-button-back {
-                            font-size: 0.75rem;
-                            width: 9rem;
-                        }
-                    
-                    }
-    
                     .scanner__product {
-                        border: 2px solid $mediumgray;
-                        border-radius: 10px;
-                        flex: 1;
-                        display: none;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        padding: 1.25rem;
                         gap: 1.5rem;
-    
-                        .scanner__product__text-container {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 0.1rem;
-                            border-bottom: 2px solid $mediumgray;
-                            width: 18rem;
-                            font-size: 0.875rem;
-                        }
-    
-                        .scanner__product__button-back {
-                            padding: 0.25rem;
-                            width: 12rem;
-                            font-size: 0.75rem;
-                        }
                     }
-    
-                    .scanner__section-title {
-                        text-transform: uppercase;
-                        margin-bottom: 1rem;
-                        position: relative;
-                        font-size: 0.75rem;
-    
-                        &::after {
-                            content: "";
-                            position: absolute;
-                            left: 0;
-                            bottom: -0.75rem;
-                            width: 100%;
-                            height: 2px;
-                            background-color: $red;
-                            transition: 0.5s;
-                        }
-                    }
-
-                    .scanner__section-subtitle {
-                        font-size: 0.75rem;
-                    }
-
-                    .error-message {
-                        font-size: 0.75rem;
-                    }
-                }
-            }
-    
-            // ALLERGENS
-            .allergens {
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                padding: 1.25rem;
-                gap: 1rem;
-    
-                .allergens__title {
-                    font-size: 0.875rem;
-                    align-self: center;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
-    
-                    margin-bottom: 1rem;
-                    position: relative;
-    
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        left: 0;
-                        bottom: -0.5rem;
-                        width: 100%;
-                        height: 2px;
-                        background-color: $red;
-                        transition: 0.5s;
-                    }
-                }
-    
-                .allergens__checkboxes {
-                    background-color: $mediumgray;
-                    border-radius: 10px;
-                    display: flex;
-                    flex-direction: row;
-                    padding: 1rem;
-                    align-items: center;
-                    justify-content: space-evenly;
-                    flex: 4;
-                    font-size: 1rem;
-    
-                    .allergens__checkbox-group {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 1.875rem;
-    
-                        .allergens__checkbox,
-                        .allergens__checkbox input,
-                        .allergens__checkbox label {
-                            display: flex;
-                            gap: 0.75rem;
-                            cursor: pointer;
-                            transition: 0.25s;
-    
-                            &:hover {
-                                color: $red;
-                                transition: 0.25s;
-                            }
-                        }
-                    }
-                }
-    
-                .allergens__chosen {
-                    padding: 0.5rem;
-                    flex: 1;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    font-size: 0.875rem;
-                    border-bottom: 2px solid $red;
-                }
-    
-                .allergens__disclaimer {
-                    padding: 0.5rem;
-                    flex: 1;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    text-align: center;
-                    font-size: 0.75rem;
-    
-                    .allergens__disclaimer-link a{
-                        text-decoration: none;
-                        color: $blue;
-                        transition: 0.25s;
-                        text-transform: uppercase;
-                    }
-    
-                    .allergens__disclaimer-link a:hover{
-                        text-decoration: none;
-                        color: $red;
-                        transition: 0.25s;
-                    }
-                }
-            }
-    
-            // INFO
-            .info {
-                padding: 1.25rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-                
-                .info__image-container {
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-    
-                .info__image-container img{
-                    width: 35rem;
-                    height: auto;
-                }
-    
-                .info__image-container img:hover{
-                    cursor: pointer;
-                }
-                
-                .info__tooltip {
-                    position: absolute;
-                    background-color: rgba($color: #3C3D41, $alpha: 0.8);
-                    color: $white;
-                    padding: 1rem;
-                    border-radius: 8px;
-                    font-size: 1.15rem;
-                    display: none;
-                    pointer-events: none;
                 }
             }
         }
@@ -1988,384 +854,62 @@ button:hover {
 @media (min-width: 1280px) {
     .app {
         .container {
-            width: 100%;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-    
             // NAVBAR
             .navbar {
                 padding: 1.25rem;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                border-bottom: 2px solid $mediumgray;
                 font-size: 0.75rem;
     
-                .navbar__logo img{
-                    width: 8rem;
-                    height: auto;
-                    border-right: 2px solid $mediumgray;
-                }
-    
                 .links {
-                    display: flex;
                     gap: 2.15rem;
-                    align-items: center;
-                    text-transform: uppercase;
                 }
     
                 .link {
-                    text-decoration: none;
-                    color: inherit;
-                    position: relative;
-                    letter-spacing: 0.05em;
-    
                     &::after {
-                        content: "";
-                        position: absolute;
-                        left: 0;
                         bottom: -2.35rem;
-                        width: 100%;
-                        height: 0;
-                        background-color: transparent;
-                        transition: 0.5s;
-                    }
-                
-                    &:hover::after {
-                        background-color: $blue;
-                        height: 3px;
                     }
                 }
     
                 .link__active {
-                    position: relative;
-                    letter-spacing: 0.05em;
-    
                     &::after {
-                        content: "";
-                        position: absolute;
-                        left: 0;
                         bottom: -2.35rem;
-                        width: 100%;
-                        height: 3px;
-                        background-color: $blue;
                     }
-                }
-    
-                .link h6 {
-                    font-size: 1rem;
-                }
-    
-                .navbar__line {
-                    border-right: 2px solid $mediumgray;
-                    height: 2rem;
-                }
-            
-            }
-    
-            // FOOTER
-            footer {
-                width: 100%;
-                padding: 1.25rem;
-                background-color: $lightgray;
-                display: flex;
-                align-items: center;
-                font-size: 0.625rem;
-                color: $darkgray;
-                gap: 2rem;
-    
-                .footer__logo img{
-                    width: 6rem;
-                    height: auto;
-                }
+                }        
             }
     
             // SCANNER
             .scanner {
-                height: 100%;
                 padding: 1.25rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 2rem;
-    
-                .scanner__title {
-                    font-size: 1.125rem;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
-                }
     
                 .scanner__container {
-                    display: flex;
-                    flex-direction: row;
                     gap: 2rem;
                     width: 55%;
-                    height: 22rem;
-    
-                    .scanner__camera-option {
-                        color: $black;
-                        border: 2px solid $mediumgray;
-                        flex: 1;
-                        padding: 2rem;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: space-between;
-                        border-radius: 10px;
-                        font-size: 0.5rem;
-    
-                        .scanner__camera-icon {
-                            width: 4rem;
-                        }
-    
-                        .scanner__camera-button {
-                            width: 10rem;
-                            font-size: 0.75rem;
-                        }
-    
-                    }
-    
-                    .scanner__code-option {
-                        border: 2px solid $mediumgray;
-                        border-radius: 10px;
-                        flex: 1;
-                        padding: 2rem;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: space-between;
-    
-                        .scanner__code-input {
-                            padding: 0.5rem;
-                            width: 80%;
-                            border-radius: 6px;
-                            border: 1px solid $darkgray;
-                            font-size: 0.75rem;
-                        }
-    
-                        .scanner__code-button {
-                            width: 10rem;
-                            font-size: 0.75rem;
-                        }
-                    }
-    
-                    .scanner__camera {
-                        border: 2px solid $mediumgray;
-                        border-radius: 10px;
-                        flex: 1;
-                        display: none;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        padding: 1.25rem;
-                        gap: 1rem;
-    
-                        .scanner-container {
-                            width: 330px;
-                            height: 220px;
-                            overflow: hidden;
-    
-                            .scanner-view video{
-                                max-width: 100%;
-                                height: auto;
-                            }
-                        }
-    
-                        .scanner__camera-button-back {
-                            font-size: 0.75rem;
-                            width: 9rem;
-                        }
-                    
-                    }
-    
-                    .scanner__product {
-                        border: 2px solid $mediumgray;
-                        border-radius: 10px;
-                        flex: 1;
-                        display: none;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        padding: 1.25rem;
-                        gap: 1.5rem;
-    
-                        .scanner__product__text-container {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 0.1rem;
-                            border-bottom: 2px solid $mediumgray;
-                            width: 18rem;
-                            font-size: 0.875rem;
-                        }
-    
-                        .scanner__product__button-back {
-                            padding: 0.25rem;
-                            width: 12rem;
-                            font-size: 0.875rem;
-                        }
-                    }
     
                     .scanner__section-title {
-                        text-transform: uppercase;
-                        margin-bottom: 1rem;
-                        position: relative;
                         font-size: 0.875rem;
-    
-                        &::after {
-                            content: "";
-                            position: absolute;
-                            left: 0;
-                            bottom: -0.75rem;
-                            width: 100%;
-                            height: 2px;
-                            background-color: $red;
-                            transition: 0.5s;
-                        }
-                    }
-
-                    .scanner__section-subtitle {
-                        font-size: 0.75rem;
-                    }
-
-                    .error-message {
-                        font-size: 0.75rem;
                     }
                 }
             }
     
             // ALLERGENS
-            .allergens {
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                padding: 1.25rem;
-                gap: 1rem;
-    
+            .allergens {    
                 .allergens__title {
                     font-size: 1rem;
-                    align-self: center;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
-    
-                    margin-bottom: 1rem;
-                    position: relative;
-    
                     &::after {
-                        content: "";
-                        position: absolute;
-                        left: 0;
                         bottom: -0.75rem;
-                        width: 100%;
-                        height: 2px;
-                        background-color: $red;
-                        transition: 0.5s;
                     }
                 }
     
                 .allergens__checkboxes {
-                    background-color: $mediumgray;
-                    border-radius: 10px;
-                    display: flex;
-                    flex-direction: row;
                     padding: 1.25rem;
-                    align-items: center;
-                    justify-content: space-evenly;
-                    flex: 4;
                     font-size: 1.125rem;
-    
-                    .allergens__checkbox-group {
-                        display: flex;
-                        flex-direction: column;
-                        gap: 1.875rem;
-    
-                        .allergens__checkbox,
-                        .allergens__checkbox input,
-                        .allergens__checkbox label {
-                            display: flex;
-                            gap: 0.75rem;
-                            cursor: pointer;
-                            transition: 0.25s;
-    
-                            &:hover {
-                                color: $red;
-                                transition: 0.25s;
-                            }
-                        }
-                    }
                 }
     
                 .allergens__chosen {
-                    padding: 0.5rem;
-                    flex: 1;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
                     font-size: 1rem;
-                    border-bottom: 2px solid $red;
                 }
     
                 .allergens__disclaimer {
-                    padding: 0.5rem;
-                    flex: 1;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    text-align: center;
                     font-size: 0.875rem;
-    
-                    .allergens__disclaimer-link a{
-                        text-decoration: none;
-                        color: $blue;
-                        transition: 0.25s;
-                        text-transform: uppercase;
-                    }
-    
-                    .allergens__disclaimer-link a:hover{
-                        text-decoration: none;
-                        color: $red;
-                        transition: 0.25s;
-                    }
-                }
-            }
-    
-            // INFO
-            .info {
-                padding: 1.25rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-                
-                .info__image-container {
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-    
-                .info__image-container img{
-                    width: 35rem;
-                    height: auto;
-                }
-    
-                .info__image-container img:hover{
-                    cursor: pointer;
-                }
-                
-                .info__tooltip {
-                    position: absolute;
-                    background-color: rgba($color: #3C3D41, $alpha: 0.8);
-                    color: $white;
-                    padding: 1rem;
-                    border-radius: 8px;
-                    font-size: 1.15rem;
-                    display: none;
-                    pointer-events: none;
                 }
             }
         }
@@ -2376,133 +920,33 @@ button:hover {
 @media (min-width: 1536px) {
     .app {
         .container {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-    
             // NAVBAR
             .navbar {
-                padding: 1.25rem;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                border-bottom: 2px solid $mediumgray;
-    
-                .navbar__logo img{
-                    width: 8rem;
-                    height: auto;
-                    border-right: 2px solid $mediumgray;
-                }
-    
                 .links {
-                    display: flex;
                     gap: 2.25rem;
-                    align-items: center;
-                    text-transform: uppercase;
                 }
-    
-                .link {
-                    text-decoration: none;
-                    color: inherit;
-                    position: relative;
-                    letter-spacing: 0.05em;
-    
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        left: 0;
-                        bottom: -2.35rem;
-                        width: 100%;
-                        height: 0;
-                        background-color: transparent;
-                        transition: 0.5s;
-                    }
-                
-                    &:hover::after {
-                        background-color: $blue;
-                        height: 3px;
-                    }
-                }
-    
-                .link__active {
-                    position: relative;
-                    letter-spacing: 0.05em;
-    
-                    &::after {
-                        content: "";
-                        position: absolute;
-                        left: 0;
-                        bottom: -2.35rem;
-                        width: 100%;
-                        height: 3px;
-                        background-color: $blue;
-                    }
-                }
-    
-                .link h6 {
-                    font-size: 1rem;
-                }
-    
-                .navbar__line {
-                    border-right: 2px solid $mediumgray;
-                    height: 2rem;
-                }
-            
             }
     
             // FOOTER
             footer {
-                width: 100%;
-                padding: 1.25rem;
-                background-color: $lightgray;
-                display: flex;
-                align-items: center;
                 font-size: 0.75rem;
-                color: $darkgray;
-                gap: 2rem;
     
                 .footer__logo img{
                     width: 8rem;
-                    height: auto;
                 }
             }
     
             // SCANNER
             .scanner {
-                height: 100%;
-                padding: 1.25rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                gap: 2rem;
-    
                 .scanner__title {
                     font-size: 1.25rem;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
                 }
     
                 .scanner__container {
-                    display: flex;
-                    flex-direction: row;
-                    gap: 2rem;
                     width: 50%;
                     height: 24rem;
     
                     .scanner__camera-option {
-                        color: $black;
-                        border: 2px solid $mediumgray;
-                        flex: 1;
-                        padding: 2rem;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: space-between;
-                        border-radius: 10px;
-    
                         .scanner__camera-icon {
                             width: 5rem;
                         }
@@ -2511,24 +955,11 @@ button:hover {
                             font-size: 0.875rem;
                             width: 11.5rem;
                         }
-    
                     }
     
                     .scanner__code-option {
-                        border: 2px solid $mediumgray;
-                        border-radius: 10px;
-                        flex: 1;
-                        padding: 2rem;
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: space-between;
-    
                         .scanner__code-input {
-                            padding: 0.5rem;
                             width: 90%;
-                            border-radius: 6px;
-                            border: 1px solid $darkgray;
                             font-size: 0.875rem;
                         }
     
@@ -2539,27 +970,6 @@ button:hover {
                     }
     
                     .scanner__camera {
-                        border: 2px solid $mediumgray;
-                        border-radius: 10px;
-                        flex: 1;
-                        display: none;
-                        flex-direction: column;
-                        align-items: center;
-                        justify-content: center;
-                        padding: 1.25rem;
-                        gap: 1rem;
-    
-                        .scanner-container {
-                            width: 330px;
-                            height: 220px;
-                            overflow: hidden;
-    
-                            .scanner-view video{
-                                max-width: 100%;
-                                height: auto;
-                            }
-                        }
-    
                         .scanner__camera-button-back {
                             font-size: 0.875rem;
                             width: 10rem;
@@ -2567,46 +977,14 @@ button:hover {
                     }
     
                     .scanner__product {
-                        border: 2px solid $mediumgray;
-                        border-radius: 10px;
-                        flex: 1;
-                        display: none;
-                        flex-direction: column;
-                        justify-content: center;
-                        align-items: center;
-                        padding: 1.25rem;
-                        gap: 1.5rem;
-    
-                        .scanner__product__text-container {
-                            display: flex;
-                            flex-direction: column;
-                            gap: 0.1rem;
-                            border-bottom: 2px solid $mediumgray;
-                            width: 18rem;
-                        }
-    
                         .scanner__product__button-back {
-                            font-size: 0.875rem;
-                            padding: 0.25rem;
                             width: 12.5rem;
                         }
                     }
     
                     .scanner__section-title {
-                        text-transform: uppercase;
-                        margin-bottom: 1rem;
-                        position: relative;
-                        font-size: 0.875rem;
-    
                         &::after {
-                            content: "";
-                            position: absolute;
-                            left: 0;
                             bottom: -1rem;
-                            width: 100%;
-                            height: 2px;
-                            background-color: $red;
-                            transition: 0.5s;
                         }
                     }
 
@@ -2622,134 +1000,39 @@ button:hover {
     
             // ALLERGENS
             .allergens {
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                padding: 1.25rem;
-                gap: 1rem;
-    
                 .allergens__title {
                     font-size: 1.25rem;
-                    align-self: center;
-                    text-transform: uppercase;
-                    letter-spacing: 0.05em;
-    
-                    margin-bottom: 1rem;
-                    position: relative;
     
                     &::after {
-                        content: "";
-                        position: absolute;
-                        left: 0;
                         bottom: -1rem;
-                        width: 100%;
-                        height: 2px;
-                        background-color: $red;
-                        transition: 0.5s;
                     }
                 }
     
                 .allergens__checkboxes {
-                    background-color: $mediumgray;
-                    border-radius: 10px;
-                    display: flex;
-                    flex-direction: row;
-                    padding: 1.25rem;
-                    align-items: center;
-                    justify-content: space-evenly;
-                    flex: 4;
                     font-size: 1.35rem;
     
                     .allergens__checkbox-group {
-                        display: flex;
-                        flex-direction: column;
                         gap: 2rem;
-    
-                        .allergens__checkbox,
-                        .allergens__checkbox input,
-                        .allergens__checkbox label {
-                            display: flex;
-                            gap: 0.75rem;
-                            cursor: pointer;
-                            transition: 0.25s;
-    
-                            &:hover {
-                                color: $red;
-                                transition: 0.25s;
-                            }
-                        }
                     }
                 }
     
                 .allergens__chosen {
-                    padding: 0.5rem;
-                    flex: 1;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
                     font-size: 1.15rem;
-                    border-bottom: 2px solid $red;
                 }
     
                 .allergens__disclaimer {
-                    padding: 0.5rem;
-                    flex: 1;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    text-align: center;
                     font-size: 1rem;
-    
-                    .allergens__disclaimer-link a{
-                        text-decoration: none;
-                        color: $blue;
-                        transition: 0.25s;
-                        text-transform: uppercase;
-                    }
-    
-                    .allergens__disclaimer-link a:hover{
-                        text-decoration: none;
-                        color: $red;
-                        transition: 0.25s;
-                    }
                 }
             }
     
             // INFO
             .info {
-                padding: 1.25rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-                
-                .info__image-container {
-                    width: 100%;
-                    height: 100%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                }
-    
                 .info__image-container img{
                     width: 40rem;
-                    height: auto;
-                }
-    
-                .info__image-container img:hover{
-                    cursor: pointer;
                 }
                 
                 .info__tooltip {
-                    position: absolute;
-                    background-color: rgba($color: #3C3D41, $alpha: 0.8);
-                    color: $white;
-                    padding: 1rem;
-                    border-radius: 8px;
                     font-size: 1.15rem;
-                    display: none;
-                    pointer-events: none;
                 }
             }
         }
