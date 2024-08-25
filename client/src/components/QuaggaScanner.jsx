@@ -18,12 +18,25 @@ const QuaggaScanner = forwardRef((props, ref) => {
     });
   }, []);
 
+  // Android
   const isMobileDevice = () => {
     return /Mobi|Android/i.test(navigator.userAgent);
   };
 
+  // iPhone
+  const isIOSDevice = () => {
+    return /iPhone|iPad|iPod/i.test(navigator.userAgent);
+  };
+
   const getPreferredCameraId = () => {
     if (videoDevices.length === 0) return null;
+
+    // iPhone
+    if (isIOSDevice()) {
+      // iOS often lists the back camera as the first or only device
+      return videoDevices.find(device => device.label.toLowerCase().includes('back'))?.deviceId || videoDevices[0].deviceId;
+    }    
+
     if (isMobileDevice()) {
       // Use the last camera on mobile
       return videoDevices[videoDevices.length - 1].deviceId;
