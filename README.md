@@ -1,3 +1,3 @@
 ﻿# allergy-guide
- App in progress while I work on other things
-[wip]
+- An app I'm making for a a health professional.<br />
+- LINK: https://allergyguide.netlify.app/
