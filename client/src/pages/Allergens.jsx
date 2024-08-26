@@ -1,8 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+import Navbar from "../components/Navbar";
 
 function Allergens() {
     useEffect(() => { checkLocalStorage(); allergensToString(); },[]);
+
+    const changeActiveSection = () => (event) => {
+        const links = document.querySelectorAll('.link');
+        links.forEach(link => link.classList.remove('link__active'));
+        const scannerLink = document.getElementById("scannerLink");
+        scannerLink.classList.add('link__active');
+    }
 
     // Dynamic string value with all checked allergens
     const [allergens, setAllergens] = useState('');
@@ -100,7 +108,7 @@ function Allergens() {
             </div>
             <div className="allergens__disclaimer">
                 <p>Wybór zostanie zapamiętany do momentu wyczyszczenia przeglądarki.</p>
-                &nbsp;<p className="allergens__disclaimer-link"><Link to="/">Przejdź do Skanera</Link></p>
+                &nbsp;<p className="allergens__disclaimer-link"><Link to="/" onClick={changeActiveSection("scanner")}>Przejdź do Skanera</Link></p>
             </div>
         </div>
     )
