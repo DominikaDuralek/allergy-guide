@@ -32,17 +32,12 @@ const QuaggaScanner = forwardRef((props, ref) => {
     if (videoDevices.length === 0) return null;
 
     // iPhone
-    if (isIOSDevice()) {
-      // iOS often lists the back camera as the first or only device
-      //return videoDevices[0].deviceId;
-      
+    if (isIOSDevice()) {      
       // Use the rear camera if available
       const rearCamera = videoDevices.find(device => device.label.toLowerCase().includes('back'));
       if (rearCamera) {
         return rearCamera.deviceId;
       }
-      // Fallback to any camera if rear camera isn't explicitly found
-      return videoDevices[0].deviceId;
     } else if (isMobileDevice()) {
       // Use the last camera on mobile
       return videoDevices[videoDevices.length - 1].deviceId;
